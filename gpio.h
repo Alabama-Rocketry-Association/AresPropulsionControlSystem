@@ -1,6 +1,22 @@
+/*
+    File Name: gpio.h
+    Author: Jonathan Martini
+    Created: 2/10/2021
+    Description:
+        -provides a library of functions for interfacing with gpio pins via linux syscalls
+*/
+
 #ifndef GPIO_H
 
 #endif // !GPIO_H
+
+/*
+
+    Configure pins as output to be written to. I.E. Low/High values for interfacing with relay switches (solenoids)
+
+*/
+
+
 
 #include <stdio.h>
 #include <fcntl.h>
