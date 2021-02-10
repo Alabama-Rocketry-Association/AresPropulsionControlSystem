@@ -5,16 +5,18 @@
 #include <unistd.h> //usleep
 
 
+#define LOG_PIN_MSG_INIT "Pin Initialized"
+#define LOG_PIN_MSG_ON "Pin On"
+#define LOG_PIN_MSG_OFF "Pin OFF"
+#define NONE "NONE"                 //const char* to be passed to functions without a need
+
+
 #define _sleep(t) usleep(t * 1000) //sleep macro for t millisecond wait usleep -> microseconds 1000 micro==milli
 
 /*
 Author: Jonathan Martini 2021
 
-
 */
-
-
-
 
 union datafeed {
 
@@ -25,6 +27,10 @@ namespace HotFireHardwareSpecific2021{
         int cmd_sleep(int t, const char *) { //follows command_sequence function pointer type formatting
             // milliseconds
             _sleep(t);
+            return 0;
+        };
+        
+        int RelayINIT(int pin, const char *MODE){
             return 0;
         };
     };
