@@ -48,7 +48,7 @@ namespace HotFireHardwareSpecific2021{
             .args {
 
             }
-        }
+        };
     };
 
 };
