@@ -5,7 +5,17 @@
 
 #define MSG "WORKING CORRECTLY\n" // const char *
 
+/*
+
+Author: Jonathan Martini 2021
+
+*/
+
+
 using namespace execution;
+
+
+
 
 int dummy(int mode, const char *msg){
     //dummy pass function
