@@ -3,7 +3,7 @@
 
 #include "exec.h"
 #include <unistd.h> //usleep
-
+#include <chrono>
 
 #define LOG_PIN_MSG_INIT "Pin Initialized"
 #define LOG_PIN_MSG_ON "Pin On"
@@ -15,12 +15,27 @@
 
 /*
 Author: Jonathan Martini 2021
-
 */
 
-union datafeed {
 
+namespace Data {
+    struct datapacket {
+        std::time_t timestamp;
+        std::vector<std::tuple<std::string, double>> data;
+        int id;
+    };
+
+    union datafeed {
+        std::time_t start_time;
+        std::string name;
+        std::vector<datapacket> feed;
+    };
+
+    class DataHyperVisor{
+
+    };
 };
+
 
 namespace HotFireHardwareSpecific2021{
     namespace RelayCMD{

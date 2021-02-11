@@ -5,15 +5,10 @@
 #include <spdlog/spdlog.h>
 
 
-
 #define MSG "WORKING CORRECTLY\n" // const char *
-
 /*
-
 Author: Jonathan Martini 2021
-
 */
-
 
 using namespace execution;
 
@@ -30,6 +25,7 @@ int dummy(int mode, const char *msg){
 
 int main(){
     spdlog::set_level(spdlog::level::debug);
+    auto logger = execution::mk_logger("console");
     command_sequence test_seq = {
         .functions{
             &dummy,
@@ -44,7 +40,7 @@ int main(){
             {4, MSG}
         }
     };
-    int res = execution::execute_command_sequence(&test_seq);
+    int res = execution::execute_command_sequence(&test_seq, std::string("console"));
     std::cout << res << std::endl;
     return 0;
 }
