@@ -7,6 +7,7 @@
 #include <vector>
 #include <tuple>
 #include <iostream>
+#include "gpio_hotfire.h"
 
 
 #define LOG_PIN_MSG_INIT "Pin Initialized"

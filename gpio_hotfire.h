@@ -107,15 +107,8 @@ namespace pin_io {
         char *mode;
     };
 
-    class GPIOHypervisor {
-        private:
-            std::vector<pin> PINS;
-        public:
-            GPIOHypervisor(std::vector<std::tuple<std::string, unsigned, char*>> init_values); // pin name, pin number, direction MODE;
-            void GPIOHypervisorSetPinByName(std::string, const char*);
-            void GPIOHypervisorSetPinByNumber(unsigned, const char *);
-            void GPIOHypervisorSetDirectionByName(std::string, const char*);
-            void GPIOHypervisorSetDirectionbyNumber(unsigned, const char*);
+    union RUNTIME_PINS {
+        std::vector<pin> PINS;
     };
 
     namespace gpio_util {
