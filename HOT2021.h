@@ -4,6 +4,10 @@
 #include "exec.h"
 #include <unistd.h> //usleep
 #include <chrono>
+#include <vector>
+#include <tuple>
+#include <iostream>
+
 
 #define LOG_PIN_MSG_INIT "Pin Initialized"
 #define LOG_PIN_MSG_ON "Pin On"
@@ -18,23 +22,6 @@ Author: Jonathan Martini 2021
 */
 
 
-namespace Data {
-    struct datapacket {
-        std::time_t timestamp;
-        std::vector<std::tuple<std::string, double>> data;
-        int id;
-    };
-
-    union datafeed {
-        std::time_t start_time;
-        std::string name;
-        std::vector<datapacket> feed;
-    };
-
-    class DataHyperVisor{
-
-    };
-};
 
 
 namespace HotFireHardwareSpecific2021{
@@ -57,6 +44,20 @@ namespace HotFireHardwareSpecific2021{
             if change, create new header file and redefine command_sequence data structure
 
         */
+       command_sequence gpio_initialization = {
+           .functions {
+            //pin exports
+            pin_io::initPIN,
+
+           },
+           .args {
+               // pins
+            {1, NONE},
+            {2, NONE}
+           }
+       };
+
+
         command_sequence tank_pressurization = {
             .functions {
 

@@ -1,6 +1,3 @@
-#ifndef EXEC_H
-#define EXEC_H
-
 #include <stdio.h>
 #include <iostream>
 #include <vector>
@@ -30,9 +27,30 @@ Author: Jonathan Martini 2021
 #define HIGH "1"
 
 struct command_sequence {
-    std::vector<int(*)(int, const char *)> functions;        //function type int(*func)(params types) pointers
+    std::vector<int(*)(unsigned, const char *)> functions;        //function type int(*func)(params types) pointers
     std::vector<std::tuple<int, const char*>> args;
 };
+
+struct command_sequence {
+    std::vector<int(*)(unsigned, const char *)> functions;        //function type int(*func)(params types) pointers
+    std::vector<std::tuple<int, const char*>> args;
+};
+
+
+
+
+namespace pin_io {
+    struct pin {
+        unsigned pin;
+        unsigned value;
+        char* mode;
+    };
+
+    void set_value(pin *target, unsigned value){
+        
+    };
+
+}
 
 namespace pin_io_hacky{
     std::string execute_shell(std::string command) {
@@ -71,27 +89,3 @@ namespace pin_io_hacky{
         return 0;
         };
 }
-namespace pin_io {
-
-}
-
-
-namespace execution {
-    int execute_command_sequence(command_sequence *seq, std::string global_logger){
-        assert (seq->functions.size() == seq->args.size()); //assert that the size of the function list matches that of the argument list
-        int sz = seq->functions.size();
-        for (int i = 0; i < sz; i++){
-            int res = seq->functions[i](std::get<0>(seq->args[i]), std::get<1>(seq->args[i]));      //passes and executes function with arguments
-            if (res != -1) continue;
-            else {
-                perror("Error:\t"); 
-                return -1;
-            }
-        }
-        return 0;
-    }
-
-};
-
-
-#endif
