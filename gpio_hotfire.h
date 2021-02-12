@@ -101,11 +101,22 @@ namespace pin_io {
 		setting.
     */
     struct pin {
+        char *name;
         unsigned pin;
         char *value;
         char *mode;
     };
 
+    class GPIOHypervisor {
+        private:
+            std::vector<pin> PINS;
+        public:
+            GPIOHypervisor(std::vector<std::tuple<std::string, unsigned, char*>> init_values); // pin name, pin number, direction MODE;
+            void GPIOHypervisorSetPinByName(std::string, const char*);
+            void GPIOHypervisorSetPinByNumber(unsigned, const char *);
+            void GPIOHypervisorSetDirectionByName(std::string, const char*);
+            void GPIOHypervisorSetDirectionbyNumber(unsigned, const char*);
+    };
 
     namespace gpio_util {
         
@@ -158,8 +169,6 @@ namespace pin_io {
             close(value_file);
             free(path_target); //freeing memory allocated by data allocated by path()
         };
-
-
 
     };
 
